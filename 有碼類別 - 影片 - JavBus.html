@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://www.javbus.com/genre -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>有碼類別 - 影片 - JavBus</title>
+<meta name="keywords" content="">
+<meta name="description" content="影片分類 - JavBus">
+<link rel="alternate" href="https://www.javbus.com/en/genre" hreflang="en">
+<link rel="alternate" href="https://www.javbus.com/ja/genre" hreflang="ja">
+<link rel="alternate" href="https://www.javbus.com/ko/genre" hreflang="ko">
+<link rel="alternate" href="https://www.javbus.com/genre" hreflang="zh">
+<link rel="alternate" href="https://www.javbus.com/genre" hreflang="x-default">
+<link rel="canonical" href="https://www.javbus.com/genre">
+<link rel="preconnect" href="https://poweredby.jads.co/" crossorigin="">
+<link rel="dns-prefetch" href="https://poweredby.jads.co/">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/bootstrap.min.css">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/bootstrap-theme.min.css">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/css-slider.css">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/nav.overlay.css">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/magnific-popup.css">
+<link rel="stylesheet" href="./有碼類別 - 影片 - JavBus_files/base.css">
+<script src="./有碼類別 - 影片 - JavBus_files/jquery.min.js.download"></script>
+<script src="./有碼類別 - 影片 - JavBus_files/jquery.magnific-popup.min.js.download"></script>
+<script src="./有碼類別 - 影片 - JavBus_files/bootstrap.min.js.download" defer=""></script>
+<script src="./有碼類別 - 影片 - JavBus_files/jquery.cookie.min.js.download" defer=""></script>
+<script src="./有碼類別 - 影片 - JavBus_files/base.js.download" defer=""></script>
+<script src="./有碼類別 - 影片 - JavBus_files/bootstrap-hover-dropdown.js.download" defer=""></script>
+<script src="./有碼類別 - 影片 - JavBus_files/nav.overlay.js.download" defer=""></script>
+<!--[if lt IE 9]> <script src="https://www.javbus.com/js/html5shiv.min.js"></script><script src="https://www.javbus.com/js/respond.min.js"></script><![endif]-->
+</head>
+<body>
+<script language="JavaScript">
+var mod = 0;
+var lang = 'zh';
+var info = '搜尋 識別碼, 影片, 演員';
+function searchs(obj){
+	var searchinput = $("#"+obj);
+	if(searchinput.val()=='')
+	{
+		$('#magnet-url-post').trigger("click");	
+		   return false;
+	}
+	else
+	{
+		//$('#search-loading').show();
+		window.open("https://www.javbus.com/search/"+encodeURIComponent($.trim(searchinput.val()))+"&type=&parent=ce");
+	}
+}
+
+$(function(){
+		
+	var url ='https://www.javbus.com/ajax/search-modal.php?floor='+Math.floor(Math.random()*1000+1)+'&lang='+lang;
+       $.ajax({url: url,type: 'GET',success: function(msg){
+			$("#searchModal").append(msg);										  
+	   }});
+});
+</script>
+<div id="search-loading">
+    <table class="search-loading-box" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td align="center">
+                    <table height="80" width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td height="40" align="center">
+                                	<div class="search-loading-text">搜尋中...</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="40" align="center">
+                                    <img src="./有碼類別 - 影片 - JavBus_files/search_loading.gif" border="0">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Search -->
+<div id="searchModal" class="modal fade" tabindex="-1" role="dialog">  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<a href="https://www.javbus.com/genre#searchModal" class="hide" data-toggle="modal"><button class="btn" id="magnet-url-post" type="button"></button></a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">請輸入搜尋內容！</h4>
+      </div>
+      <div class="modal-body">
+        <p>您沒有輸入搜尋內容，請輸入您要搜尋的內容！</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div> 
+  </div>
+
+<nav class="navbar navbar-default navbar-fixed-top top-bar" style="z-index:900">
+    <div class="container-fluid">
+        <div class="navbar-header mh50">
+            <a href="https://www.javbus.com/">
+                <img class="hidden-xs" height="50" alt="JavBus" src="./有碼類別 - 影片 - JavBus_files/logo.png" style="height:40px; margin-top:5px;">
+                <img class="visible-xs-inline" height="50" alt="JavBus" src="./有碼類別 - 影片 - JavBus_files/logo.png">
+            </a>                                                 
+
+            
+
+            <div class="btn-group pull-right visible-xs-inline" role="group" style="margin:8px 8px 0 0;">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-globe"></span>  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://www.javbus.com/en/genre">English</a></li>
+                    <li><a href="https://www.javbus.com/ja/genre">日本语</a></li>
+                    <li><a href="https://www.javbus.com/ko/genre">한국의</a></li>
+                    <li><a href="https://www.javbus.com/genre">中文</a></li>   
+                </ul>
+            </div>
+ 
+ 		 
+		            <div class="btn-group pull-right visible-xs-inline" role="group" style="margin:8px 8px 0 0;">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-filter"></span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li id="cellshowgr_multi"><a><span class="glyphicon glyphicon-filter"></span> 多選類別</a></li>
+                </ul>
+            </div>
+                              
+ 
+        </div>
+ 
+        <div id="navbar" class="collapse navbar-collapse">
+            <div class="navbar-form navbar-left fullsearch-form">
+                <div class="input-group">
+                    <input id="search-input" type="text" class="form-control" placeholder="搜尋 識別碼, 影片, 演員">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" onclick="searchs(&#39;search-input&#39;)">搜尋</button>
+                    </span>
+                </div>
+            </div>
+            <ul class="nav navbar-nav">
+            	<li><a href="https://www.javbus.com/">有碼</a></li>                    
+                <li><a href="https://www.javbus.com/uncensored">無碼</a></li>
+                <li class="hidden-md hidden-sm"><!-- <div class="icon-new"></div> --><a href="https://www.javbus.org/">歐美</a></li>
+				            	
+                <li class="dropdown hidden-sm active">
+                    <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">類別 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://www.javbus.com/genre">有碼類別</a></li>
+                        <li><a href="https://www.javbus.com/uncensored/genre">無碼類別</a></li>				
+                    </ul>
+                </li>
+                <li class="dropdown hidden-sm ">
+                    <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">女優 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://www.javbus.com/actresses">有碼女優</a></li>
+                        <li><a href="https://www.javbus.com/uncensored/actresses">無碼女優</a></li>				
+                    </ul>
+                </li>                
+                <li class="dropdown"><a href="https://www.javbus.com/" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                    	<li class="visible-md-block visible-sm-block"><a href="https://www.javbus.org/">歐美</a></li>
+                                                <li class="visible-sm-block"><a href="https://www.javbus.com/genre">有碼類別</a></li>
+                        <li class="visible-sm-block"><a href="https://www.javbus.com/uncensored/genre">無碼類別</a></li>
+                        <li class="visible-sm-block"><a href="https://www.javbus.com/actresses">有碼女優</a></li>
+                        <li class="visible-sm-block"><a href="https://www.javbus.com/uncensored/actresses">無碼女優</a></li>                        
+                        <li><a href="https://www.javbus.com/genre/hd">高清</a></li>
+                        <li><a href="https://www.javbus.com/genre/sub">字幕</a></li>
+                    </ul>
+				</li> 
+            </ul>
+            
+            
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">English</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://www.javbus.com/en/genre">English</a></li>
+                        <li><a href="https://www.javbus.com/ja/genre">日本语</a></li>
+                        <li><a href="https://www.javbus.com/ko/genre">한국의</a></li>
+                        <li><a href="https://www.javbus.com/genre">中文</a></li>   
+                    </ul>
+                </li>
+            </ul>
+
+                        
+        	            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-filter" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">單選類別</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="mypointer" id="showgr_multi"><a><span class="glyphicon glyphicon-filter"></span>多選類別</a></li> 
+                    </ul>
+                </li>
+            </ul>            
+                         
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="row visible-xs-inline footer-bar">
+    <div class="col-xs-3 text-center">
+        <a id="menu" class="btn btn-default trigger-overlay"><span class="glyphicon glyphicon-align-justify"></span></a>
+    </div>
+    <div class="col-xs-3 text-center">
+         </div>
+    <div class="col-xs-3 text-center">
+        </div>    
+    <div class="col-xs-3 text-center">
+        <a id="back" class="btn btn-default" href="javascript:window.history.back()"><span class="glyphicon glyphicon-share-alt flipx"></span></a>
+    </div>    
+</div>    
+<script src="./有碼類別 - 影片 - JavBus_files/focus.js.download"></script>  <link rel="stylesheet" type="text/css" href="./有碼類別 - 影片 - JavBus_files/genre.css">
+<div class="container-fluid pt10">
+
+<div class="ad-box all-top">
+        <div class="ad-item"><div class="ad-juicy"><script data-cfasync="false" async="" src="./有碼類別 - 影片 - JavBus_files/jads.js.download"></script><ins id="706613" data-width="728" data-height="90"></ins><script type="text/javascript" data-cfasync="false" async="">(adsbyjuicy = window.adsbyjuicy || []).push({"adzone":706613});</script></div></div>
+    </div>
+
+ 
+
+
+		<h4>主題</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/62">折磨</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5g">嘔吐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/59">觸手</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/57">蠻橫嬌羞</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/52">處男</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4y">正太控</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4r">出軌</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4e">瘙癢</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4d">運動</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4a">女同接吻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/49">性感的</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/44">美容院</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/41">處女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/40">爛醉如泥的</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3x">殘忍畫面</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3w">妄想</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3v">惡作劇</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3t">學校作品</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3r">粗暴</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3g">通姦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3e">姐妹</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3d">雙性人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3c">跳舞</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3b">性奴</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/37">倒追</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/35">性騷擾</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2y">其他</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2x">戀腿癖</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2v">偷窥</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2t">花癡</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2r">男同性恋</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2e">情侶</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2d">戀乳癖</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/20">亂倫</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1y">其他戀物癖</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1u">偶像藝人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1i">野外・露出</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1e">獵豔</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1d">女同性戀</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/11">企畫</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6h">10枚組</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/61">科幻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6i">女優ベスト・総集編</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6j">温泉</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6k">M男</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6l">原作コラボ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6n">16時間以上作品</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6o">デカチン・巨根</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6p">ファン感謝・訪問</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6q">動画</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6r">巨尻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6s">ハーレム</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6t">日焼け</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6u">早漏</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6v">キス・接吻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6w">汗だく</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/77">スマホ専用縦動画</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7d">Vシネマ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7c">Don Cipote's choice</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7f">アニメ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7g">アクション</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7h">イメージビデオ（男性）</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7i">孕ませ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7j">ボーイズラブ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7t">ビッチ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7u">特典あり（AVベースボール）</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7v">コミック雑誌</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7w">時間停止</a>
+			</div>
+			<h4>角色</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5w">黑幫成員</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5k">童年朋友</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5i">公主</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5f">亞洲女演員</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/58">伴侶</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4s">講師</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4l">婆婆</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4h">格鬥家</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3o">女檢察官</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/39">明星臉</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/38">女主人、女老板</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/34">模特兒</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/32">秘書</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/30">美少女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2z">新娘、年輕妻子</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2w">姐姐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2q">格鬥家</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2o">車掌小姐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2f">寡婦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2b">千金小姐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2a">白人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/29">已婚婦女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/27">女醫生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/26">各種職業</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/23">妓女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/21">賽車女郎</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1x">女大學生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1v">展場女孩</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1n">女教師</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1k">母親</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1c">家教</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/17">护士</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/10">蕩婦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/z">黑人演員</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/p">女生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/c">女主播</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/b">高中女生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7">服務生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5r">魔法少女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/65">學生（其他）</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/64">動畫人物</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6c">遊戲的真人版</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6f">超級女英雄</a>
+			</div>
+			<h4>服裝</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5h">女戰士</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5c">及膝襪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5b">娃娃</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/56">女忍者</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/55">女裝人妖</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/50">內衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4z">猥褻穿著</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4p">兔女郎</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4n">貓耳女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4k">女祭司</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4i">泡泡襪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3i">制服</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3a">緊身衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2s">裸體圍裙</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2m">迷你裙警察</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2l">空中小姐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/28">連褲襪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1w">身體意識</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/18">OL</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/12">和服・喪服</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/y">體育服</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/v">內衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/m">水手服</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/l">學校泳裝</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/k">旗袍</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j">女傭</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i">迷你裙</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/a">校服</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/9">泳裝</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/8">眼鏡</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1">角色扮演</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6b">哥德蘿莉</a>
+			</div>
+			<h4>體型</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5d">超乳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4x">肌肉</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3n">乳房</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3k">嬌小的</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2k">屁股</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2i">高</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2g">變性者</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/22">無毛</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1t">胖女人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1f">苗條</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/15">孕婦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/13">成熟的女人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/w">蘿莉塔</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/t">貧乳・微乳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e">巨乳</a>
+			</div>
+			<h4>行為</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4w">顏面騎乘</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4t">食糞</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4j">足交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/47">母乳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/46">手指插入</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/45">按摩</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/42">女上位</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3q">舔陰</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3l">拳交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3f">深喉</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2h">69</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/24">淫語</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1z">潮吹</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1s">乳交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1r">排便</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1p">飲尿</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1o">口交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1j">濫交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/19">放尿</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/x">打手槍</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/u">吞精</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/r">肛交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/n">顏射</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h">自慰</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5">顏射</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4">中出</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6m">肛内中出</a>
+			</div>
+			<h4>玩法</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/51">立即口交</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4f">女優按摩棒</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4c">子宮頸</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4b">催眠</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3z">乳液</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3y">羞恥</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3s">凌辱</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3p">拘束</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3m">輪姦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3h">插入異物</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/36">鴨嘴</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2u">灌腸</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/25">監禁</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1q">紧缚</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1m">強姦</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1l">藥物</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1h">汽車性愛</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1b">SM</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1a">糞便</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/14">玩具</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/q">跳蛋</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/d">緊縛</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6">按摩棒</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3">多P</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5m">性愛</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5y">假陽具</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/63">逆強姦</a>
+			</div>
+			<h4>類別</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/60">合作作品</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5z">恐怖</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5t">給女性觀眾</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5s">教學</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5q">DMM專屬</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5o">R-15</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5n">R-18</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5e">3D</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/5a">特效</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/54">故事集</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/53">限時降價</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4v">複刻版</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4u">戲劇</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4q">戀愛</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4o">高畫質</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4m">主觀視角</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/48">介紹影片</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/43">4小時以上作品</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3u">薄馬賽克</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/3j">經典</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/33">首次亮相</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/31">數位馬賽克</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2p">投稿</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2n">纪录片</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2c">國外進口</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/1g">第一人稱攝影</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/16">業餘</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/s">局部特寫</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/o">獨立製作</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g">DMM獨家</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f">單體作品</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2">合集</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hd">高清</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/sub">字幕</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/2j">天堂TV</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4g">DVD多士爐</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/66">AV OPEN 2014 スーパーヘビー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/69">AV OPEN 2014 ヘビー級</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/6a">AV OPEN 2014 ミドル級</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/70">AV OPEN 2015 マニア/フェチ部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/71">AV OPEN 2015 熟女部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/72">AV OPEN 2015 企画部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/73">AV OPEN 2015 乙女部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/74">AV OPEN 2015 素人部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/75">AV OPEN 2015 SM/ハード部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/76">AV OPEN 2015 女優部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7k">AVOPEN2016人妻・熟女部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7l">AVOPEN2016企画部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7m">AVOPEN2016ハード部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7n">AVOPEN2016マニア・フェチ部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7o">AVOPEN2016乙女部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7p">AVOPEN2016女優部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7q">AVOPEN2016ドラマ・ドキュメンタリー部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7r">AVOPEN2016素人部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7s">AVOPEN2016バラエティ部門</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7x">VR専用</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7y">堵嘴·喜劇</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/7z">幻想</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/80">性別轉型·女性化</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/81">為智能手機推薦垂直視頻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/82">設置項目</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/83">迷你係列</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/84">體驗懺悔</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/85">黑暗系統</a>
+			</div>
+			<h4>其他</h4>
+		<div class="row genre-box">
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/dx">オナサポ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/dy">アスリート</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/dz">覆面・マスク</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e0">ハイクオリティVR</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e1">ヘルス・ソープ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e2">ホテル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e3">アクメ・オーガズム</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e4">花嫁</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e5">デート</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e6">軟体</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e7">娘・養女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e8">スパンキング</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/e9">スワッピング・夫婦交換</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ea">部下・同僚</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eb">旅行</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ec">胸チラ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ed">バック</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ee">エロス</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ef">男の潮吹き</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eg">女上司</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eh">セクシー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ei">受付嬢</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ej">ノーブラ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ek">白目・失神</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/el">M女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/em">女王様</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/en">ノーパン</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eo">セレブ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ep">病院・クリニック</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eq">面接</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/er">お風呂</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/es">叔母さん</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/et">罵倒</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/eu">お爺ちゃん</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ev">逆レイプ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ew">ディルド</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ex">ヨガ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ey">飲み会・合コン</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ez">部活・マネージャー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f0">お婆ちゃん</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f1">ビジネススーツ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f2">チアガール</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f3">ママ友</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f4">エマニエル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f5">妄想族</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f6">蝋燭</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f7">鼻フック</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f8">放置</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/f9">サンプル動画</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fa">サイコ・スリラー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fb">ラブコメ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fc">オタク</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fd">4K</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fe">福袋</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ff">玩具責め</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fj">女優</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fl">お掃除フェラ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fn">筆おろし</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fq">美脚</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ft">美尻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fu">フェチ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fw">羞恥プレイ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fx">逆ナンパ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/fy">着衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g0">誘惑</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g1">チラリズム</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g2">写真集</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g3">書籍版</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g4">SM拘束</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g6">ドキュメント</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/g9">グッズ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ga">Tシャツ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gb">失禁</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gc">オナホール</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gd">カップホール</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ge">非貫通</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gf">ローション付き</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gh">配信専用</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gi">官能小説</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gj">CD</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gk">生挿入</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gl">風俗</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gm">外国人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gn">淫語責め</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/go">アナルファック</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gp">脚コキ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gq">オイルプレイ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gr">キャバ嬢</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gs">調教</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gt">ローション・オイル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gu">媚薬</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gv">顔面騎乗位</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gw">微乳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gx">デカチン</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/gz">野外</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h0">露出</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h1">レイプ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h2">ベスト、総集編</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h3">マジックミラー号</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h4">看護師</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h5">アイドル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h6">妹</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h7">スクール水着</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h8">デリヘル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/h9">凌辱</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ha">童貞モノ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hb">ブルマ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hc">ホテヘル</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hd">縛り</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/he">ロリータ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hf">ミニスカート</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hg">尻</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hh">奴隷</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hi">芸能人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hj">下着</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hk">母親</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hl">湯</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hm">教師</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hn">ストッキング</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ho">電車、バス</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hp">健康診断</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hq">野球拳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hr">浴衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hs">爆乳</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ht">ソープ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hu">スワッピング</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hv">メガネ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hw">素股</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hx">ドリンク</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hy">フルハイビジョン(FHD)</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/hz">三十路</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i0">羞恥・辱め</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i1">パンチラモノ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i2">放尿・失禁</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i3">五十路</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i4">ショートヘアー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i5">着物・浴衣</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i6">清楚</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i7">四十路</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i8">VR</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/i9">オモチャ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ia">エステ・マッサージ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ib">Gカップ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ic">目隠し</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/id">ドラッグ・媚薬</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ie">六十路</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/if">淫語モノ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ig">口内発射</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ih">童顔</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ii">スチュワーデス・CA</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ij">Dカップ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ik">美熟女</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/il">MGSだけのおまけ映像付き</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/im">手マン</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/in">パンストモノ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/io">フェラモノ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ip">性教育</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iq">HowTo</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ir">MGS限定特典映像</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/is">寝取り･寝取られ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/it">Eカップ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iu">Fカップ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iv">ロングヘアー</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iw">黒髪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ix">ショートヘア</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iy">金髪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/iz">茶髪</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j0">女子高生</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j1">ハーフ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j2">金髪・ブロンド</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j3">初撮り</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j4">介護</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j5">Hカップ</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j6">期間限定販売</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j7">多人数</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j8">風俗嬢</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/j9">PICKUP素人</a>
+	            
+			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/ja">オイル・ローション</a>
+			</div>
+	
+ 
+</div>
+
+<script>
+$("#showgr_single,#cellshowgr_single").click(function(){
+	$.cookie("existisgenres", "gr_single",{expires:365,path:'/'}); 
+	location.reload() 
+});
+
+$("#showgr_multi,#cellshowgr_multi").click(function(){
+	$.cookie("existisgenres", "gr_multi",{expires:365,path:'/'}); 
+	location.reload() 
+});
+
+function genres_sel(){
+	var curGenres = "";
+	$("input[name='gr_sel']:checkbox").each(function () { if($(this).is(":checked")){ curGenres += $(this).val() + "-"; } });
+	if (curGenres != "") {
+		curGenres = curGenres.substring(0, curGenres.length - 1);
+		window.location.href="genre/"+curGenres;
+	}
+	else {
+		return;
+	}
+	
+}
+</script>
+
+<div class="ad-box">
+        <div class="ad-item"><div class="ad-juicy"><script data-cfasync="false" async="" src="./有碼類別 - 影片 - JavBus_files/jads.js.download"></script><ins id="365002" data-width="728" data-height="90"></ins><script type="text/javascript" data-cfasync="false" async="">(adsbyjuicy = window.adsbyjuicy || []).push({"adzone":365002});</script></div></div>
+    </div>
+
+
+<footer class="footer hidden-xs">
+	<div class="container-fluid">
+        <p><a href="https://www.javbus.com/doc/terms">Terms</a> / <a href="https://www.javbus.com/doc/privacy">Privacy</a> / <a href="https://www.javbus.com/doc/usc">2257</a> / <a href="http://www.rtalabel.org/" target="_blank" rel="external nofollow">RTA</a> / <a href="javascript:bootstr(1);" r="">廣告投放</a> / <a href="javascript:bootstr(2);">聯絡我們</a><br><a href="https://www.javbus.com/genre#formModal" id="adscontact" data-toggle="modal"></a>
+        Copyright © 2013 JavBus. All Rights Reserved. All other trademarks and copyrights are the property of their respective holders. The reviews and comments expressed at or through this website are the opinions of the individual author and do not reflect the opinions or views of JavBus. JavBus is not responsible for the accuracy of any of the information supplied here.</p>
+	</div>
+</footer>
+<div class="visible-xs-block footer-bar-placeholder"></div>
+
+<script language="javascript">
+    function bootstr(type){
+    	ads = "廣告投放";
+    	contact = "聯絡我們";
+    	translate = "翻譯";
+    	$("#adstype").val(type);
+    	if(type==1){
+    		$("#contactModalLab").html(ads);
+    		$("#qqskype").show();
+    		$("#transinfo").hide();
+    		$("#translanguage").hide();
+    		$("#mailcontent").show();		
+    	}else if(type==2){
+    		$("#contactModalLab").html(contact);
+    		$("#qqskype").show();
+    		$("#transinfo").hide();
+    		$("#translanguage").hide();
+    		$("#mailcontent").show();
+    	}else if(type==3){
+    		$("#contactModalLab").html(translate);
+    		$("#qqskype").hide();
+    		$("#transinfo").show();
+    		$("#translanguage").show();
+    		$("#mailcontent").hide();
+    	}
+    	$("#adscontact").trigger("click");
+		getverifycode();    	
+    };
+    function getverifycode(){
+       $('#verify').attr("src","/post/verify?"+Math.random()*10000);
+    };
+    function IsMail(mail){
+     var remail= /^([a-zA-Z0-9_-])+(\.)?([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+     return(remail.test(mail));
+    };
+    function checkform(){
+    	var post = true; 
+      if($("#verifycode").val().length!=5){
+    	  	alert("驗證碼輸入錯誤!") 
+    		$("#verifycode").focus(); 
+    		post = false;
+    	  }
+      if($("#contact").val().length>255){
+    	  	alert("聯繫方式字數過多!") 
+    		$("#contact").focus(); 
+    		post = false;
+    	  }
+      
+      if(!IsMail($("#mail").val())){
+    	alert("請輸入正確的電郵地址!") 
+     	$("#mail").focus(); 
+        post = false;
+      }
+      
+      if($("#intention").val().length>25500){
+    	  	alert("投放意向字數過多!") 
+    		$("#intention").focus(); 
+    		post = false;
+    	  }
+    	  
+      if($("#trans").val().length>255){
+    	  	alert("Too many words in your language textbox!") 
+    		$("#intention").focus(); 
+    		post = false;
+    	  }	  
+      if(post== true){
+    	  $("#modalclose").trigger("click");
+    	  $("#postform").attr("action", "/post/contact");
+    	  $("#postform").submit();
+    	}
+      return post;
+    };
+</script>
+
+<script>
+$("#showmag,#cellshowmag,#resultshowmag").click(function(){
+	$.cookie("existmag", "mag",{expires:365,path:'/'}); 
+	location.reload() 
+});
+
+$("#showall,#cellshowall,#resultshowall").click(function(){
+	$.cookie("existmag", "all",{expires:365,path:'/'}); 
+	location.reload() 
+});
+$("#showonline").click(function(){
+	$.cookie("existmag", "online",{expires:365,path:'/'}); 
+	location.reload() 
+});
+$(".info .mypointer").click(function(){
+	var obj = $(this);
+	var code = obj.attr('value');
+	var token = $("#token").val();
+	var e = "../ajax/addfavorite.php?code=" + encodeURIComponent(code) + "&token=" + encodeURIComponent(token) + "&floor=" + Math.floor(Math.random() * 1e3 + 1);
+    $.ajax({
+        url: e,
+        type: "POST",
+		//dataType: "json",
+		cache:false,
+        success: function (json) {
+			//obj.html(json);
+			ajaxobj=eval("("+json+")");
+			if(ajaxobj.act=='err'){
+				alert('收藏次數達上限，請稍候再試');	
+			}else{
+				obj.html(ajaxobj.act);
+				obj.attr('value',ajaxobj.code);
+				obj.attr('title',ajaxobj.title);
+				$("#token").val(ajaxobj.token);
+			}
+        }
+    });
+});
+
+$(".glyphicon-heart-empty").hover(function () {
+    $(this).removeClass('glyphicon-heart-empty');
+	$(this).addClass('glyphicon-heart');
+}, function () {
+    $(this).removeClass('glyphicon-heart');
+    $(this).addClass('glyphicon-heart-empty');
+});
+$(".glyphicon-heart").hover(function () {
+    $(this).removeClass('glyphicon-heart');
+	$(this).addClass('glyphicon-heart-empty');
+}, function () {
+    $(this).removeClass('glyphicon-heart-empty');
+    $(this).addClass('glyphicon-heart');
+});
+</script>
+
+<!-- Modal Forms -->
+<div id="formModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="modalclose" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="contactModalLab">聯絡我們</h4>
+            </div>
+            <div class="modal-body">                     
+                <form class="form-horizontal" name="postform" method="post" id="postform" enctype="multipart/form-data">
+                    <fieldset>
+                                                <div class="form-group" id="qqskype">
+                            <label class="col-sm-4 control-label" for="contact">QQ / Skype</label>
+                            <div class="col-sm-6">
+                                <input id="contact" name="contact" type="text" placeholder="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="mail">Email</label>
+                            <div class="col-sm-6">
+                                <input id="mail" name="mail" type="text" placeholder="" class="form-control">  
+                            </div>
+                        </div>
+                        <div class="form-group" id="translanguage">
+                            <label class="col-sm-4 control-label" for="trans">Your Language</label>
+                            <div class="col-sm-6">
+                                <input id="trans" name="trans" type="text" placeholder="" class="form-control">  
+                            </div>
+                        </div>
+                        <div class="form-group" id="mailcontent">
+                            <label class="col-sm-4 control-label" for="intention" id="inten-trans">內容</label>
+                            <div class="col-sm-6">                     
+                                <textarea id="intention" name="intention" rows="9" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" for="verify">驗證碼</label>
+                            <div class="col-sm-6">                     
+                                <input type="text" id="verifycode" name="verifycode" style="width:50px">
+                                <img id="verify" src="https://www.javbus.com/genre" style="cursor: pointer; vertical-align:middle;" onclick="getverifycode()">
+                            </div>
+                        </div>
+                        <input type="hidden" id="adstype" name="adstype" value="1">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" button="" class="btn btn-primary" onclick="checkform()">送出</button>  
+                <button type="button" button="" class="btn btn-default" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ////////////////////////////////////////////////// -->
+<div class="overlay overlay-contentscale">
+    <div class="row">
+        <div class="col-xs-12 text-center ptb20">
+                 <div class="input-group col-xs-offset-2 col-xs-8">
+                      <input id="search-input-mobile" type="text" class="form-control" placeholder="搜尋 識別碼, 影片, 演員">
+                      <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit" onclick="searchs(&#39;search-input-mobile&#39;)">搜尋</button>
+                      </span>
+                 </div>
+        </div>             
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/">有碼</a></div>
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/uncensored">無碼</a></div>   
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/genre">有碼類別</a></div>
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/uncensored/genre">無碼類別</a></div>
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/actresses">有碼女優</a></div>
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/uncensored/actresses">無碼女優</a></div>
+		<div class="col-xs-6 text-center"><a href="https://www.javbus.org/">歐美</a></div>
+        <div class="col-xs-6 text-center"><a href="https://www.javbus.com/genre/hd">高清</a></div>
+    
+       <div class="col-xs-12 text-center overlay-close">
+          <i class="glyphicon glyphicon-remove"></i>
+       </div>  
+    </div>
+</div>
+
+
+
+<div id="fatkun-drop-panel">
+        <a id="fatkun-drop-panel-close-btn">×</a>
+            <div id="fatkun-drop-panel-inner">
+                <div class="fatkun-content">
+                    <svg class="fatkun-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5892"><path d="M494.933333 782.933333c2.133333 2.133333 4.266667 4.266667 8.533334 6.4h8.533333c6.4 0 10.666667-2.133333 14.933333-6.4l2.133334-2.133333 275.2-275.2c8.533333-8.533333 8.533333-21.333333 0-29.866667-8.533333-8.533333-21.333333-8.533333-29.866667 0L533.333333 716.8V128c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333v588.8L249.6 475.733333c-8.533333-8.533333-21.333333-8.533333-29.866667 0-8.533333 8.533333-8.533333 21.333333 0 29.866667l275.2 277.333333zM853.333333 874.666667H172.8c-12.8 0-21.333333 8.533333-21.333333 21.333333s8.533333 21.333333 21.333333 21.333333H853.333333c12.8 0 21.333333-8.533333 21.333334-21.333333s-10.666667-21.333333-21.333334-21.333333z" p-id="5893"></path></svg>
+                    <div class="fatkun-title">Drag and Drop</div>
+                    <div class="fatkun-desc">The image will be downloaded</div>
+                </div>
+            </div>
+    </div></body></html>
