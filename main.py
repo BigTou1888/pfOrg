@@ -1,16 +1,19 @@
 import os
 import shutil
 
-DIR_LIST = []
+DIR_LIST = ["F:\名优分类"]
 
-for dir in DIR_LIST:
-  os.chdir(dir)  path = os.path.abspath(r'.\Movie_files')
-  for p, d, f in os.walk(r'C:\Users\carte\Downloads'):
-    for file in f:
+def find_movie(dir):
+  for root, dirs, files in os.walk(dir):
+    for sub_dir in dirs:
+      find_movie(os.path.join(dir, sub_dir))
+    for file in files:
       if file.endswith('.mp4') or file.endswith('.mkv'):
         print('-------------------------------------------------------')
-        print('File Path:' + os.path.abspath(file))
+        print('File Path:' + os.path.join(root, file))
         print(f"Movie File:{file}")
         print('-------------------------------------------------------')
-        movie_file_path =os.path.abspath(file)
-        shutil.move(movie_file_path, path)
+for dir in DIR_LIST:
+  find_movie(dir)
+
+
