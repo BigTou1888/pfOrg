@@ -69,7 +69,7 @@ class refDb(Database):
 
 
   '''
-  def __init__(self, log=None, dbDir='', dbName='csrRefDb', versionCheck=False, selfLock=False, cacheEntries=1000):
+  def __init__(self, log=None, dbDir='', dbName='main', versionCheck=False, selfLock=False, cacheEntries=1000):
 
     if dbDir == '':
       self.dbDir = os.getcwd()
