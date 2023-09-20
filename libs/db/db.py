@@ -5,52 +5,9 @@ from datetime import datetime
 import threading
 import re
 
-from .common import base as commonBase
-from .cacheDict import cacheDict
 
+class base_db():
 
-class Database(commonBase):
-  '''
-    The wrapper of operating sqlite database
-
-    Attributes
-    ----------
-
-    dbDir
-      database directory
-
-    dbName
-      database name
-  
-    initNewDb
-      initialize the sqlite database
-
-    appendTime
-      append time suffix after teh dbName
-
-    maxHistDbs
-      the maximum number of history database
-
-    dbFileName
-      sql database file name
-
-    mDb
-      database object(sqlite connection)
-
-    lock
-      thread lock, used to avoid multiple access of database
-
-    Methods
-    -------
-
-    __init__
-      Initialize a new database wrapper
-
-    setSimulator
-      set fiji pdk simulator
-
-    htmlMatchTab
-  '''
   def __init__(self, name='', log=None, dbDir='dbs', dbName='csr', initNewDb=False, appendTime=False, maxHistDbs=1, selfLock=False, cacheEntries=0):
     ''' Initialize a new database wrapper.
 
