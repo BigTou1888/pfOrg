@@ -1,0 +1,182 @@
+/* ------------- General ------------- */
+.csslider1 {
+  display: inline-block;
+  position: relative;
+  max-width: 728px;  
+  width: 100%;
+  margin: 5px;
+}
+.csslider1,
+.csslider1 *,
+.csslider1 *:after,
+.csslider1 *:before {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.csslider1 > .cs_anchor {
+  display: none;
+}
+.csslider1 > ul {
+  position: relative;
+  z-index: 1;
+  font-size: 0;
+  line-height: 0;
+  margin: 0 auto;
+  padding: 0;
+  
+  overflow: hidden;
+  white-space: nowrap;
+}
+.csslider1 > ul > .cs_skeleton {
+  width: 100%;
+  visibility: hidden;
+  font-size: 0px;
+  line-height: 0;
+  height: 250px;
+}
+
+.csslider1 > ul > .slide.img img {
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  transform: translate(-70%,-50%);
+  height: 110%; /*Adjust This Value to Zoom image size - 104%~130% is recommended*/
+  width: auto;
+}
+
+.all-top #bob .csslider1 > ul > .slide.img img {
+  left: 75%;
+  transform: translate(-75%,-50%);
+  height: 104%;
+}
+
+.all-top #tb .csslider1 > ul > .slide.img img {
+  left: 60%;
+  transform: translate(-60%,-50%);
+  height: 104%;
+}
+
+.all-top #ky .csslider1 > ul > .slide.img img,
+.all-top #kok .csslider1 > ul > .slide.img img {
+  height: 130%;
+}
+
+.csslider1 > ul > .slide {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 15px;
+  font-size: initial;
+  line-height: normal;
+  white-space: normal;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+.csslider1 .cs_engine{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  font-size: 0pt;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* ------------- /General Styles ------------- */
+
+/* ------------- Effect ------------- */
+
+.csslider1 > ul > .slide {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 1;
+  
+  -webkit-transition: opacity 1000ms ease;
+  transition: opacity 1000ms ease;
+
+  
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+
+@-webkit-keyframes fade1 {
+  0%, 25%, 100%  { opacity: 0; }
+  5%, 20%  { opacity: 1; }
+  0%, 19.999%  { z-index: 2; }
+  20.001%, 100%  { z-index: 1; }
+}
+@keyframes fade1 {
+  0%, 25%, 100%  { opacity: 0; }
+  5%, 20%  { opacity: 1; }
+  0%, 19.999%  { z-index: 2; }
+  20.001%, 100%  { z-index: 1; }
+}
+
+.csslider1 > #cs_play1:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play2:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play3:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play4:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play5:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play6:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play7:checked ~ ul > .slide.num0,
+.csslider1 > #cs_play8:checked ~ ul > .slide.num0 {
+  -webkit-animation: fade1 20000ms infinite -1000ms;
+  animation: fade1 20000ms infinite -1000ms;
+}
+.csslider1 > #cs_play1:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play2:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play3:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play4:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play5:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play6:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play7:checked ~ ul > .slide.num1,
+.csslider1 > #cs_play8:checked ~ ul > .slide.num1 {
+  -webkit-animation: fade1 20000ms infinite 3000ms;
+  animation: fade1 20000ms infinite 3000ms;
+}
+.csslider1 > #cs_play1:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play2:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play3:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play4:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play5:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play6:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play7:checked ~ ul > .slide.num2,
+.csslider1 > #cs_play8:checked ~ ul > .slide.num2 {
+  -webkit-animation: fade1 20000ms infinite 7000ms;
+  animation: fade1 20000ms infinite 7000ms;
+}
+.csslider1 > #cs_play1:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play2:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play3:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play4:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play5:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play6:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play7:checked ~ ul > .slide.num3,
+.csslider1 > #cs_play8:checked ~ ul > .slide.num3 {
+  -webkit-animation: fade1 20000ms infinite 11000ms;
+  animation: fade1 20000ms infinite 11000ms;
+}
+.csslider1 > #cs_play1:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play2:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play3:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play4:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play5:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play6:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play7:checked ~ ul > .slide.num4,
+.csslider1 > #cs_play8:checked ~ ul > .slide.num4 {
+  -webkit-animation: fade1 20000ms infinite 15000ms;
+  animation: fade1 20000ms infinite 15000ms;
+}
+
+/* ------------- /Effect ------------- */
