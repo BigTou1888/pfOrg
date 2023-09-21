@@ -4,11 +4,12 @@ import sqlite3
 from datetime import datetime
 import threading
 import re
+from .cacheDict import cacheDict
 
 
 class base_db():
 
-  def __init__(self, name='', log=None, dbDir='dbs', dbName='csr', initNewDb=False, appendTime=False, maxHistDbs=1, selfLock=False, cacheEntries=0):
+  def __init__(self, log=None, dbDir='dbs', dbName='csr', initNewDb=False, appendTime=False, maxHistDbs=1, selfLock=False, cacheEntries=0):
     ''' Initialize a new database wrapper.
 
     Arguments
@@ -36,7 +37,7 @@ class base_db():
       the maximum number of history database
 
     '''
-    super().__init__(name, log)
+    self.log = log
     self.dbDir = dbDir
     self.dbName = dbName
     self.initNewDb = initNewDb
@@ -69,9 +70,9 @@ class base_db():
     self.dirClean(initNewDb)
     # create database or connect to existed one
     if os.path.isfile(self.dbFileName):
-      self.log.info(0, 'Connect Existing Database %s' % self.dbFileName)
+      self.log.info('Connect Existing Database %s' % self.dbFileName)
     else:
-      self.log.info(0, 'Create New Database %s' % self.dbFileName)
+      self.log.info('Create New Database %s' % self.dbFileName)
     db_conn = sqlite3.connect(self.dbFileName, check_same_thread=False)
     return db_conn
 

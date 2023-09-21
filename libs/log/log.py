@@ -3,63 +3,9 @@ from datetime import datetime
 import logging
 
 
-class Log ():
-  '''
-    The logger wrapper
+class log ():
 
-    Attributes
-    ----------
-    logName
-      log name, log component name and log file prefix name
-
-    logDir = logDir
-      log file directory
-
-    maxHistLogs = maxHistLogs
-      the maximum number of history log files
-
-    logLevel
-      logging level
-
-    logFileName
-      log file name
-
-    logFormat 
-      log format, prefix prepend
-
-    logFileMode
-      log file mode, fix to 'w'
-
-    logger
-      logger
-
-    Methods
-    -------
-
-    __init__
-      Initialize a new logger
-
-    createLogger
-      create logger
-
-    getLogger
-      get logger, if not exist, create a new one
-
-    dirClean
-      Clean log dictory, if the old logs exceed the maximum logs, delete the oldest
-
-    info
-      log message as info 
-
-    debug
-      log message as debug, verbosity set 6 for klog
-
-    error
-      log message as error
-
-  '''
-
-  def __init__(self, logName='default', logDir='logs', appendTime=False, maxHistLogs=1, debug=True):
+  def __init__(self, log_dir='logs', log_name='default', append_time=False, max_hist_logs=1, debug=True):
     ''' Initialize a new crashdump core.
   
     Arguments
@@ -78,26 +24,26 @@ class Log ():
       debug mode, it will affect log level
     '''
 
-    self.logName = logName
-    self.logDir = logDir
-    self.appendTime = appendTime
-    self.maxHistLogs = maxHistLogs
+    self.log_name = log_name
+    self.log_dir = log_dir
+    self.append_time = append_time
+    self.max_hist_logs = max_hist_logs
 
-    if maxHistLogs > 1:
-      self.appendTime = True
+    if max_hist_logs > 1:
+      self.append_time = True
 
     if debug:
-      self.logLevel = logging.DEBUG
+      self.log_lvl = logging.DEBUG
     else:
-      self.logLevel = logging.INFO
+      self.log_lvl = logging.INFO
 
-    if self.appendTime:
-      self.logFileName = os.path.join(self.logDir, self.logName + '_' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.log')
+    if self.append_time:
+      self.log_file_name = os.path.join(self.log_dir, self.log_name + '_' + datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.log')
     else:
-      self.logFileName = os.path.join(self.logDir, self.logName + '.log')
+      self.log_file_name = os.path.join(self.log_dir, self.log_name + '.log')
 
-    self.logFormat ='%(asctime)s : %(levelname)s : %(message)s'
-    self.logFileMode = 'w'
+    self.log_format ='%(asctime)s : %(levelname)s : %(message)s'
+    self.log_file_mode = 'w'
 
     self.logger = self.getLogger()
 
@@ -114,8 +60,8 @@ class Log ():
     # clean the log directory, create the directory if not exists, if the history logs exceed the maximum, delete the old ones
     self.dirClean()
     # create logger
-    logger = logging.getLogger(self.logName)
-    logging.basicConfig(level=self.logLevel, filename=self.logFileName, format=self.logFormat, filemode=self.logFileMode)
+    logger = logging.getLogger(self.log_name)
+    logging.basicConfig(level=self.log_lvl, filename=self.log_file_name, format=self.log_format, filemode=self.log_file_mode)
 
     return logger
 
@@ -135,14 +81,14 @@ class Log ():
   def dirClean(self):
     ''' Clean log dictory, if the old logs exceed the maximum logs, delete the oldest '''
     # if the directory does not exist, create a new one
-    if not os.path.exists(self.logDir):
+    if not os.path.exists(self.log_dir):
       #os.mkdir(self.logDir)
-      os.makedirs(self.logDir, exist_ok=True)
+      os.makedirs(self.log_dir, exist_ok=True)
 
     # if the history logs exceed maximum limit, delete old ones
-    oldLogs = [os.path.join(self.logDir, f) for f in os.listdir(self.logDir) if os.path.isfile(os.path.join(self.logDir, f)) and f.startswith(self.logName)]
+    oldLogs = [os.path.join(self.log_dir, f) for f in os.listdir(self.log_dir) if os.path.isfile(os.path.join(self.log_dir, f)) and f.startswith(self.log_name)]
     oldLogs.sort()
-    while len(oldLogs) >= self.maxHistLogs and len(oldLogs) != 0:
+    while len(oldLogs) >= self.max_hist_logs and len(oldLogs) != 0:
       # remove oldest logs, if exceed the limit
       os.remove(oldLogs[0])
       oldLogs.pop(0)

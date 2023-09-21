@@ -7,14 +7,16 @@ COL_GEN     = 'genre'
 COL_TIME    = 'time'
 COL_DUR     = 'duration'
 COL_COMPANY = 'company'
+COL_WAIT    = 'downloading'
 COL_LAST    = 'last time watch'
 COL_COUNT   = 'watch times'
 COL_FAV     = 'favorite'
 
 # main database
 # main table
-MAIN_TABLE = 'main'
-MAIN_TABLE_SCHEMA = [[COL_PN,       'TEXT', 'NOT NULL'], 
+MAIN_DB = "main"
+JP_TBL = 'japanese_table'
+JP_TBL_SCHEMA = [[COL_PN,       'TEXT', 'NOT NULL'], 
                      [COL_LOC,      'TEXT', 'NOT NULL'], 
                      [COL_NAME,     'TEXT', 'NOT NULL'], 
                      [COL_FL,       'TEXT', 'NOT NULL'], 
@@ -27,47 +29,78 @@ MAIN_TABLE_SCHEMA = [[COL_PN,       'TEXT', 'NOT NULL'],
                      [COL_COUNT,    'TEXT', 'NOT NULL'],
                      [COL_FAV,      'TEXT', 'NOT NULL']
                      ]
-MAIN_TABLE_KEY = [COL_PN, COL_LOC]
-
-# favorite table
-FAV_TABLE = 'favorite'
-FAV_TABLE_SCHEMA = [  [COL_PN,       'TEXT', 'NOT NULL'], 
-                      [COL_LOC,      'TEXT', 'NOT NULL'], 
-                      [COL_NAME,     'TEXT', 'NOT NULL']
-                   ]
-FAV_TABLE_KEY = [COL_PN, COL_LOC]
-
-# unknown table
-UNKNOWN_TABLE = 'unknown'
-UNKNOWN_TABLE_SCHEMA = [[COL_LOC, 'TEXT', 'NOT NULL'], 
-                        [COL_NAME, 'TEXT', 'NOT NULL'] ]
-UNKNOWN_TABLE_KEY = [COL_LOC]
+JP_TBL_KEY = [COL_LOC]
 
 # chinese table
-CHINA_TABLE = 'china'
-CHINA_TABLE_SCHEMA = [[COL_LOC, 'TEXT', 'NOT NULL'], 
-                      [COL_NAME, 'TEXT', 'NOT NULL'] ]
-CHINA_TABLE_KEY = [COL_LOC]
+CN_TBL = 'chinese_table'
+CN_TBL_SCHEMA = [ [COL_LOC, 'TEXT', 'NOT NULL'], 
+                  [COL_NAME, 'TEXT', 'NOT NULL'],
+                  [COL_GEN,      'TEXT', 'NOT NULL'], 
+                  [COL_LAST,     'TEXT', 'NOT NULL'],
+                  [COL_COUNT,    'TEXT', 'NOT NULL'],
+                  [COL_FAV,      'TEXT', 'NOT NULL'] ]
+CN_TBL_KEY = [COL_LOC]
+
+# unknown table
+UNKN_TBL = 'unknown_table'
+UNKN_TBL_SCHEMA = [[COL_LOC, 'TEXT', 'NOT NULL'], 
+                  [COL_NAME, 'TEXT', 'NOT NULL'],
+                  [COL_GEN,      'TEXT', 'NOT NULL'], 
+                  [COL_LAST,     'TEXT', 'NOT NULL'],
+                  [COL_COUNT,    'TEXT', 'NOT NULL'],
+                  [COL_FAV,      'TEXT', 'NOT NULL'] ]
+
+UNKN_TBL_KEY = [COL_LOC]
+
+# favorite table
+MAIN_FAV_TBL = 'favorite_table'
+MAIN_FAV_TBL_SCHEMA = [  [COL_LOC,      'TEXT', 'NOT NULL'], 
+                      [COL_NAME,     'TEXT', 'NOT NULL']
+                   ]
+MAIN_FAV_TBL_KEY = [ COL_LOC]
 
 
 
 # actress database
-ACT_TABLE_SCHEMA = [  [COL_PN,    'TEXT', 'NOT NULL'], 
+ACT_DB = "act"
+ACT_TBL = '_table'
+COL_ACT     = 'actress'
+ACT_TBL_SCHEMA = [  [COL_PN,    'TEXT', 'NOT NULL'], 
                       [COL_LOC,   'TEXT', 'NOT NULL'],
-                      [COL_NAME,  'TEXT', 'NOT NULL'], 
+                      [COL_NAME,  'TEXT', 'NOT NULL']
+                     ]
+ACT_TBL_KEY = [COL_PN, COL_LOC]
+
+ACT_ACC_TBL = 'access_table'
+ACT_ACC_TBL_SCHEMA = [  [COL_ACT,    'TEXT', 'NOT NULL'], 
                       [COL_LAST,  'TEXT', 'NOT NULL'],
                       [COL_COUNT, 'TEXT', 'NOT NULL'],
                       [COL_FAV,   'TEXT', 'NOT NULL']
                      ]
-ACT_TABLE_KEY = [COL_PN, COL_LOC]
+ACT_ACC_TBL_KEY = [COL_ACT]
+
+ACT_FAV_TBL = 'favorite_table'
+ACT_FAV_TBL_SCHEMA = [  [COL_ACT,    'TEXT', 'NOT NULL'] ]
+ACT_FAV_TBL_KEY = [COL_ACT]
 
 
 # genre database
-GEN_TABLE_SCHEMA = [  [COL_PN,    'TEXT', 'NOT NULL'], 
+GEN_DB = "gen"
+GEN_TBL = '_table'
+GEN_TBL_SCHEMA = [  [COL_PN,    'TEXT', 'NOT NULL'], 
                       [COL_LOC,   'TEXT', 'NOT NULL'],
-                      [COL_NAME,  'TEXT', 'NOT NULL'], 
+                      [COL_NAME,  'TEXT', 'NOT NULL']
+                     ]
+GEN_TBL_KEY = [COL_PN, COL_LOC]
+
+GEN_ACC_TBL = 'access_table'
+GEN_ACC_TBL_SCHEMA = [  [COL_GEN,    'TEXT', 'NOT NULL'], 
                       [COL_LAST,  'TEXT', 'NOT NULL'],
                       [COL_COUNT, 'TEXT', 'NOT NULL'],
                       [COL_FAV,   'TEXT', 'NOT NULL']
                      ]
-GEN_TABLE_KEY = [COL_PN, COL_LOC]
+GEN_ACC_TBL_KEY = [COL_GEN]
+
+GEN_FAV_TBL = 'favorite_table'
+GEN_FAV_TBL_SCHEMA = [  [COL_GEN,    'TEXT', 'NOT NULL'] ]
+GEN_FAV_TBL_KEY = [COL_GEN]
