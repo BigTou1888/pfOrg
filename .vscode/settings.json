@@ -1,0 +1,9 @@
+{
+  "C_Cpp.errorSquiggles": "disabled",
+  "python.analysis.extraPaths": [
+    "./libs"
+  ],
+  "python.autoComplete.extraPaths": [
+    "./libs"
+  ]
+}

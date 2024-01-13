@@ -1,532 +1,570 @@
-
-import os
+from .common import *
 import sqlite3
-from datetime import datetime
-import threading
 import re
-from .cacheDict import cacheDict
+import os
+import shutil
+import threading
+from log.log import log as logger
 
+class base_db:
 
-class base_db():
-
-  def __init__(self, log=None, dbDir='dbs', dbName='csr', initNewDb=False, appendTime=False, maxHistDbs=1, selfLock=False, cacheEntries=0):
-    ''' Initialize a new database wrapper.
-
-    Arguments
-    ---------
-
-    name
-      name of component
-
-    log
-      logger class
-
-    dbDir
-      database directory
-
-    dbName
-      database name
-
-    initNewDb
-      initialize the database
-
-    appendTime
-      append time suffix after teh dbName
-
-    maxHistDbs
-      the maximum number of history database
-
+  def __init__(self, db_dir, db_name, log=None, lock=None, debug=False):
+    ''' initialize database
+      Arguments
+      ---------
+        db_file - database file
+        log - logger
+        debug - debug enabled
     '''
-    self.log = log
-    self.dbDir = dbDir
-    self.dbName = dbName
-    self.initNewDb = initNewDb
-    self.appendTime = appendTime
-    self.maxHistDbs = maxHistDbs
-    self.selfLock= selfLock
-    if self.selfLock:
-      self.lock = threading.Lock()
+    self.db_name = db_name
+    self.db_file_name = os.path.join(db_dir, db_name +".db")
 
-    if appendTime:
-      self.dbFileName = os.path.join(dbDir, dbName + '_' + datetime.now().strftime("%Y-%m-%d %H-%M-%S") + '.db')
+    if log is None:
+      self.log = logger(log_dir='', log_name='main_log', debug=debug)
     else:
-      self.dbFileName = os.path.join(dbDir, dbName + '.db')
+      self.log = log
 
-    self.mDb = self.getDb()
+    # multithread resource lock
+    if lock is None:
+      self.lock = threading.Lock() 
+    else:
+      self.lock = lock
 
-    self.cmdCache = cacheDict(cacheEntries)
-    
-  def createDb(self, initNewDb=False):
+    self.debug = debug
+    if debug:
+      self.debug_db_name = db_name + "_debug"
+      self.debug_db_file_name = os.path.join(db_dir, db_name + "_debug.db")
+    self.create_db()
+
+  def create_db(self):
     ''' create database
-  
-    Returns 
-    ---------
-
-    db
-      database created
     '''
 
-    # clean the db directory, create the directory if not exists, if the history dbs exceed the maximum, delete the old ones
-    self.dirClean(initNewDb)
     # create database or connect to existed one
-    if os.path.isfile(self.dbFileName):
-      self.log.info('Connect Existing Database %s' % self.dbFileName)
+    if os.path.isfile(self.db_file_name):
+      if self.debug:
+        # debug mode: copy the db to debug db, and operate the debug db
+        shutil.copy(self.db_file_name, self.debug_db_file_name)
+        self.log.info('Connect Existing Database %s' % self.debug_db_file_name)
+      else:
+        self.log.info('Connect Existing Database %s' % self.db_file_name)
     else:
-      self.log.info('Create New Database %s' % self.dbFileName)
-    db_conn = sqlite3.connect(self.dbFileName, check_same_thread=False)
-    return db_conn
-
-  def getDb(self):
-    ''' get database created, if not exist, create a new one
-  
-    Returns 
-    ---------
-
-    db
-      database
-    '''
-    if not hasattr(self, 'mDb'):
-      self.mDb = self.createDb(self.initNewDb)
-    return self.mDb
-
-  def dirClean(self, initNewDb=False):
-    ''' Clean log directory, if the old logs exceed the maximum logs, delete the oldest '''
-    # if the directory does not exist, create a new one
-    if not os.path.exists(self.dbDir):
-      #os.mkdir(self.dbDir)
-      os.makedirs(self.dbDir, exist_ok=True)
-
-    if initNewDb:
-      # only checking history dbs when initNewDb is not set
-      # if the history logs exceed maximum limit, delete old ones
-      oldDbs = [os.path.join(self.dbDir, f) for f in os.listdir(self.dbDir) if
-                os.path.isfile(os.path.join(self.dbDir, f)) and f.startswith(self.dbName)]
-      oldDbs.sort()
-      while len(oldDbs) >= self.maxHistDbs and len(oldDbs) != 0:
-        # remove oldest dbs, if exceed the limit
-        os.remove(oldDbs[0])
-        oldDbs.pop(0)
-
-  def executeSqlCmd(self, cmd, errWaiverList=[]):
-    ''' Execute sql command
-
-    Arguments
-    ---------
-
-    cmd
-      command
-
-    errWaiverList
-      the list of waiver format when error encountered executing sql command
-
-    Returns 
-    ---------
-      (success, cursor)
-
-    
-    '''
-  
-    # lock not accessable by others
-    if self.selfLock:
-      self.lock.acquire()
-    #self.log.debug( "%s executing Sql command: %s" % (self.dbName, cmd))
-
-    (cacheHit, cacheResult) = self.cmdCache.getResult(cmd)
-
-    if cacheHit:
-      self.log.debug("%s cache hits" % cmd)
-      return cacheResult
+      if self.debug:
+        self.log.info('Create New Database %s' % self.debug_db_file_name)
+      else:
+        self.log.info('Create New Database %s' % self.db_file_name )
+    if self.debug:
+      self.db_conn = sqlite3.connect(self.debug_db_file_name)
     else:
-      self.log.debug("%s cache not hits" % cmd)
-      c = self.mDb.cursor()
-      try:
-        # execute the sql command
-        cursor = c.execute(cmd)
-        self.mDb.commit()
+      self.db_conn = sqlite3.connect(self.db_file_name)
 
-        results = cursor.fetchall()
-        self.cmdCache.updDict(cmd, (True, results))
-        return (True, results)
-      except sqlite3.Error as e:
-        errMsg = ' '.join(e.args)
-        # filt error message with waivers
-        for waiver in errWaiverList:
-          if re.match(waiver, errMsg):
-            self.cmdCache.updDict(cmd, (False, None))
-            return (False, None)
-  
-        self.log.error('SQLite command \'%s\' error: %s' % (cmd, errMsg))
-        self.cmdCache.updDict(cmd, (False, None))
-        return (False, None)
-      finally:
-        # release lock 
-        if self.selfLock:
-          self.lock.release()
-        else:
-          pass
-  
-  def createTable(self, tableName, tableSchema, primaryKey, initialDb = False):
-    ''' Create table
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    tableSchema
-      table columns list, the list is two-dimension list, e.g. [[COLUMN_NAME, DATATYPE, NOT NULL(if need)], [], []]
-
-    primaryKey
-      primary key list, the list is one-dimension list
-
-    Returns 
-    ---------
-
-      (success, cursor)
-    
-    '''
-
-    cmdList = ['CREATE', 'TABLE', 'IF', 'NOT', 'EXISTS', tableName, '(']
-    for column in tableSchema:
-      for arg in column:
-        cmdList.append(arg)
-  
-      cmdList.append(',')
-  
-    cmdList.append('PRIMARY')
-    cmdList.append('KEY')
-    cmdList.append('(')
-    for arg in primaryKey:
-      cmdList.append(arg)
-      cmdList.append(',')
-  
-    if cmdList[-1] == ',':
-      cmdList.pop(-1)
-  
-    cmdList.append(')')
-    cmdList.append(')')
-    cmdList.append(';')
-  
-    cmd = ' '.join(cmdList)
-    (success, c) = self.executeSqlCmd(cmd)
-
-    if initialDb and success:
-      return self.deleteAllEntries(tableName)
-
-    return success
-
-  def createEntry(self, tableName, tableRow):
-    ''' Create table entry
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    table row
-      table entry will added in dict, e.g. {column, value}
-
-    Returns 
-    ---------
-
-      (success, cursor)
-    
-    '''
-
-    cmdList = ['INSERT', 'INTO', tableName, '(']
-
-    schemaList = []
-    valueList = []
-
-    for key in tableRow:
-      schemaList.append(key)
-      schemaList.append(',')
-      valueList.append(tableRow[key])
-      valueList.append(',')
-
-    schemaList.pop(-1)
-    valueList.pop(-1)
-
-    cmdList = cmdList + schemaList
-    cmdList.append(')')
-    cmdList.append('VALUES')
-    cmdList.append('(')
-    cmdList = cmdList + valueList
-    cmdList.append(')')
-    cmdList.append(';')
-
-    cmd = ' '.join(cmdList)
-    (success, c) = self.executeSqlCmd(cmd)
-    return success
-
-  def deleteEntry(self, tableName, cond):
-    ''' detele entry in a table 
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    cond
-      condition
-
-    Returns 
-    ---------
-
-      success
-    
-    '''
-
-    cmdList = ['DELETE', 'FROM', tableName]
-    if cond != '':
-      cmdList.append('where')
-      cmdList.append(cond)
-    cmdList.append(';')
-
-    cmd = ' '.join(cmdList)
-
-    (success, c) = self.executeSqlCmd(cmd, errWaiverList=[ 'no such table: %s' % tableName])
-    return success
-
-  def deleteAllEntries(self, tableName):
-    ''' detele all entries in a table 
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    Returns 
-    ---------
-
-      success
-    
-    '''
-
-    '''
-    cmdList = ['DELETE', 'FROM', tableName]
-    cmd = ' '.join(cmdList)
-    (success, c) = self.executeSqlCmd(cmd)
-    return success
-    '''
-    return self.deleteEntry(tableName, cond='')
-
-
-  def tableExists(self, tableName):
+  def table_exists(self, table_name):
     ''' Whether table exists
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    Returns 
-    ---------
-
-      exist
-    
+      Arguments
+      ---------
+        table_name - table name
+      Returns 
+      ---------
+        exist
     '''
-    cmd = 'SELECT count(name) FROM sqlite_master WHERE type="table" AND name="%s";' % tableName
-    (success, results) = self.executeSqlCmd(cmd, errWaiverList=[ 'no such table: %s' % tableName])
-
+    cmd = 'SELECT count(name) FROM sqlite_master WHERE type="table" AND name="%s";' % table_name
+    (success, results) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
       
     if success and results[0][0]==1 : 
       return True
     else:
       return False
 
-  def getEntryValue(self, tableName, entryList, cond = ''):
-    ''' Get entry value
+  def create_table(self, table_name, table_schema, primary_key, initial_db = False):
+    ''' Create table
+      Arguments
+      ---------
+        table_name - table name
+        table_schem - table columns list, the list is two-dimension list, e.g. [[COLUMN_NAME, DATATYPE, NOT NULL(if need)], [], []]
+        primary_key - primary key list, the list is one-dimension list
+        initial_db - initialize database, delete previous entries if exists
+      Returns 
+      ---------
+        (success, cursor)
+    '''
+    cmd_list = ['CREATE', 'TABLE', 'IF', 'NOT', 'EXISTS', table_name, '(']
+    for column in table_schema:
+      for arg in column:
+        cmd_list.append(arg)
+  
+      cmd_list.append(',')
+  
+    cmd_list.append('PRIMARY')
+    cmd_list.append('KEY')
+    cmd_list.append('(')
+    for arg in primary_key:
+      cmd_list.append(arg)
+      cmd_list.append(',')
 
-    Arguments
-    ---------
+    if cmd_list[-1] == ',':
+      cmd_list.pop(-1)
+  
+    cmd_list.append(')')
+    cmd_list.append(')')
+    cmd_list.append(';')
+  
+    cmd = ' '.join(cmd_list)
+    (success, c) = self.execute_sql_cmd(cmd)
 
-    tableName
-      table name
+    if initial_db and success:
+      return self.clear_table(table_name)
 
-    entryList
-      list of column name want to get 
+    return success
 
-    cond
-      conddition of the select  command
-
-    Returns 
-    ---------
-
-      (success, value list)
+  def clear_table(self, table_name):
+    ''' detele all entries in a table 
+      Arguments
+      ---------
+        table_name - table name
+      Returns 
+      ---------
+        success
     
     '''
-    cmdList = ['SELECT']
+    return self.delete_row(table_name, cond='')
 
-    for entry in entryList :
-      cmdList.append(entry)
-      cmdList.append(',')
+  def add_row(self, table_name, table_row):
+    ''' Create table entry
+      Arguments
+      ---------
+        table_name - table name
+        table_row - table entry will added in dict, e.g. {column, value}
+      Returns 
+      ---------
+        (success, cursor)
+    '''
 
-    cmdList.pop(-1)
+    cmd_list = ['INSERT', 'INTO', table_name]
+
+    schema_list = ['(']
+    value_list = ['(']
+
+    for key in table_row:
+      schema_list.append(key)
+      schema_list.append(',')
+      value_list.append(self.format_string(table_row[key]))
+      value_list.append(',')
+
+    # pop last ","
+    if schema_list[-1] == ',':
+      schema_list.pop(-1)
+    if value_list[-1] == ',':
+      value_list.pop(-1) 
+
+    # close bracket
+    schema_list.append(')')
+    value_list.append(')')
+
+    cmd_list = cmd_list + schema_list
+    cmd_list.append('VALUES')
+    cmd_list = cmd_list + value_list
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+    (success, c) = self.execute_sql_cmd(cmd)
+    return success
+
+  def delete_row(self, table_name, prm = {}, exac_match = True, cond = ''):
+    ''' detele entry in a table 
+      Arguments
+      ---------
+        table_name- table name
+        prm - primary key
+        cond - condition, if matching condition is complict
+      Returns 
+      ---------
+        success
+    '''
+    cmd_list = ['DELETE', 'FROM', table_name]
+    cmd_list += self.format_condition(prm, exac_match, cond)
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
+    return success
+
+  def row_exists(self, table_name, prm={}, exact_match=True, cond=''):
+    ''' check whether the row exists
+      Arguments
+      ---------
+        table_name - table name
+        prm - primary key and value
+        cond - condition, if matching condition is complict
+      Returns 
+      ---------
+        exists
+    '''
+    cmd_list = ['SELECT ', 'EXISTS', '(', 'SELECT', '1', 'FROM', table_name]
+    cmd_list += self.format_condition(prm, exact_match, cond)
+    cmd_list.append(');')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
+    if success and c[0][0] == 1:
+      return True
+    else :
+      return False
+
+  def get_col(self, table_name, col=[], prm = {}, exact_match=True, cond = ''):
+    ''' Get entry value
+      Arguments
+      ---------
+        table_name - table name
+        col - column list, list of column name want to get 
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        (success, value list)
+    '''
+    cmd_list = ['SELECT']
+
+    for c in col:
+      cmd_list.append(c)
+      cmd_list.append(',')
+
+    if cmd_list[-1] == ",":
+      cmd_list.pop(-1) 
     
-    cmdList.append('from')
-    cmdList.append(tableName)
-    if cond != '':
-      cmdList.append('where')
-      cmdList.append(cond)
-    cmdList.append(';')
-    cmd = ' '.join(cmdList)
-    (success, results ) = self.executeSqlCmd(cmd, errWaiverList=[ 'no such table: %s' % tableName])
+    cmd_list.append('from')
+    cmd_list.append(table_name)
+    cmd_list += self.format_condition(prm, exact_match, cond)
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, results ) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
     if success:
       if len(results) > 0:
         return (True, results)
       else:
         return (False, [])  
     else:
-      return(success, [])
+      return(False, [])
 
-  def getFirstEntryValue(self, tableName, entryList, cond = ''):
-    ''' Get first entry value
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    entryList
-      list of column name want to get 
-
-    cond
-      conddition of the select  command
-
-    Returns 
-    ---------
-
-      (success, value list)
-    
-
+  def get_col_from_sngl_row(self, table_name, col, prm = {}, exact_match=True, cond = ''):
+    ''' Get column entry value, and only one row can match
+      Arguments
+      ---------
+        table_name - table name
+        col - column name
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        (success, value string)
     '''
-    (success, results) = self.getEntryValue(tableName, entryList, cond)
+    success = None
+    rcol = None
+    if isinstance(col, str):
+      (success, rcol) = self.get_col(table_name=table_name, col=[col], prm=prm, exact_match=exact_match, cond=cond)
+    else: 
+      (success, rcol) = self.get_col(table_name=table_name, col=col, prm=prm, exact_match=exact_match, cond=cond)
+
+    if success: 
+      if len (rcol) == 0:
+        self.log.error("Can not find Column {}, from row match with condition {}".format(str(col), self.format_condition(prm, exact_match, cond)))
+        return (False, [])
+      elif len (rcol) > 1:
+        self.log.error("Find out more than 1 row match with condition {}".format(self.format_condition(prm, exact_match, cond)))
+        return (False, [])
+      else:
+        return (True, list(rcol[0]))
+        
+    else:  
+      self.log.error("Cannot find out any row match with condition {}".format(self.format_condition(prm, exact_match, cond)))
+      return (False, "")
+
+
+  def get_sngl_col_from_sngl_row(self, table_name, col, prm = {}, exact_match=True, cond = ''):
+    ''' Get column entry value, and only one row can match
+      Arguments
+      ---------
+        table_name - table name
+        col - column name
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        (success, value string)
+    '''
+    (success, rcol) = self.get_col_from_sngl_row(table_name=table_name, col=[col], prm=prm, exact_match=exact_match, cond=cond)
+    if success:
+      return rcol[0]
+    else: 
+      return ""
+
+  def update_col(self, table_name, col = {}, prm = {}, exact_match=True, cond = ''):
+    ''' Get entry value
+      Arguments
+      ---------
+        table_name - table name
+        col - dict, column's name and to be added value of the column
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        success
+    '''
+    cmd_list = ["UPDATE", table_name, "SET"]
+
+    for c in col :
+      cmd_list.append(c)
+      cmd_list.append("=")
+      cmd_list.append(self.format_string(col[c]))
+      cmd_list.append(",")
+
+    if cmd_list[-1] == ",":
+      cmd_list.pop(-1)
+    
+    cmd_list += self.format_condition(prm, exact_match, cond)
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, results ) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
+    return success
+
+  def add_to_col_from_sngl_row(self, table_name, col = {}, prm = {}, exact_match=True, cond = ''):
+    ''' Add new value to existing column entry, which is list, only support single row here
+      Arguments
+      ---------
+        table_name - table name
+        col - dict, column's name and to be added value of the column
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        success
+    '''
+
+    cl = list(col.keys())
+    (success, rcol) = self.get_col_from_sngl_row(table_name, cl, prm, exact_match, cond)   
 
     if success:
-      return (True, results[0])
-    else:
-      return(False, None)
-
-  def updateEntryValue(self, tableName, entryValues, cond = ''):
-    ''' Update entry value
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    entryValues
-      dictionary of column name and value
-
-    cond
-      conddition of the select  command
-
-    Returns 
-    ---------
-
-      success
-    
-    '''
-    cmdList = ['UPDATE', tableName, 'SET']
-
-    for entry in entryValues:
-      value = entryValues[entry]
-      cmdList.append(entry)
-      cmdList.append('=')
-      cmdList.append(value)
-      cmdList.append(',')
-
-    # pop last ','
-    cmdList.pop(-1)
-    
-    if cond != '':
-      cmdList.append('WHERE')
-      cmdList.append(cond)
-    cmdList.append(';')
-    cmd = ' '.join(cmdList)
-    (success, c) = self.executeSqlCmd(cmd)
-    return success
-
-  def updateOrCreateEntryValue(self, tableName, entryValues):
-    ''' Update entry value, if not exists, create the entry
-
-    Arguments
-    ---------
-
-    tableName
-      table name
-
-    entryValues
-      dictionary of column name and value
-
-    Returns 
-    ---------
-
-      success
-    
-    '''
-    cmdList = ['INSERT', 'OR', 'REPLACE', 'INTO', tableName]
-    cmdList.append('(')
-
-
-    for entry in entryValues:
-      cmdList.append(entry)
-      cmdList.append(',')
-
-    # pop last ','
-    cmdList.pop(-1)
-    cmdList.append(')')
-
-    cmdList.append('VALUES')
-    cmdList.append('(')
-
-
-    for entry in entryValues:
-      #value = entryValues[entry]
-      #cmdList.append(str(value))
-      value = self.sqlStringTypeConvert(entryValues[entry])
-      cmdList.append(value)
-      cmdList.append(',')
-
-    # pop last ','
-    cmdList.pop(-1)
-    cmdList.append(')')
-    
-    cmdList.append(';')
-    cmd = ' '.join([str(x) for x in cmdList])
-    (success, c) = self.executeSqlCmd(cmd)
-    return success
-
-  def sqlStringTypeConvert(self, value):
-    # quote value with "/', if the value is string
-    # if the value type is not string, does not change
-
-    if type(value) == type('string'):
-      if value.startswith('\'') and value.endswith('\'') :
-        # if quote with '' already, does not change
-        return value
-      elif value.startswith('"') and value.endswith('"') :
-        # if quote with "" already, does not change
-        return value
-      else: 
-        if ('\'' in value) and ('"' in value):
-          # if the value contains both ' and ", report error
-          self.log.error('%s mix \' and "' % value)
-          return value
-        elif '"' in value:
-          # if the value contains ", quote with '
-          return '\'' + value + '\''
+      for i in range(len(cl)):
+        c = cl[i]
+        vl = self.string2list(rcol[i])
+        while("" in vl):
+          vl.remove("")
+        if isinstance (col[c], list):
+          for v in col[c]:
+            if v not in vl and v != "":
+              vl.append(v)
+        elif isinstance (col[c], str):
+          if col[c] not in vl and col[c] != "":
+            vl.append(col[c])
         else:
-          # if the value does not contains ", quote with "
-          return '"' + value + '"'
+          self.log.error("Not support add {} type to exist column".format(type(col[c])))
+          return False
+        col[c] = vl
 
+      return self.update_col(table_name, col, prm, exact_match, cond)
     else:
-      return value
-      
+      return False
+
+  def inc_sngl_col_from_sngl_row(self, table_name, col, v=1, prm = {}, exact_match=True, cond = ''):
+    ''' Increase the value of single column from single row
+      Arguments
+      ---------
+        table_name - table name
+        col - column's name 
+        v - to be increased value of the column
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        success
+    '''
+
+    rcol = self.get_sngl_col_from_sngl_row(table_name, col, prm, exact_match, cond)   
+
+    if success:
+      for i in range(len(cl)):
+        c = cl[i]
+        vl = self.string2list(rcol[i])
+        while("" in vl):
+          vl.remove("")
+        if isinstance (col[c], list):
+          for v in col[c]:
+            if v not in vl and v != "":
+              vl.append(v)
+        elif isinstance (col[c], str):
+          if col[c] not in vl and col[c] != "":
+            vl.append(col[c])
+        else:
+          self.log.error("Not support add {} type to exist column".format(type(col[c])))
+          return False
+        col[c] = vl
+
+      return self.update_col(table_name, col, prm, exact_match, cond)
+    else:
+      return False
+
+     
+
+
+  def del_from_col(self, table_name, col = {}, prm = {}, exact_match=True, cond = ''):
+    ''' delete value from existing column entry, which is list
+      Arguments
+      ---------
+        table_name - table name
+        col - dict, column's name and to be added value of the column
+        prm - primary key, dict, key column's name and value
+        exact_match - exact match the prm
+        cond - conddition of the select if complicated and prm can not reach goal
+      Returns 
+      ---------
+        success
+    '''
+
+    cl = list(col.keys())
+    (success, rcol) = self.get_col_from_sngl_row(table_name, cl, prm, exact_match, cond)   
+
+    if success:
+      for i in range(len(cl)):
+        c = cl[i]
+        vl = self.string2list(rcol[i])
+        while("" in vl):
+          vl.remove("")
+        if isinstance (col[c], list):
+          for v in col[c]:
+            try:
+              vl.remove(v)
+            except ValueError:
+              pass  # do nothing!
+        elif isinstance (col[c], str):
+          try:
+            vl.remove(col[c])
+          except ValueError:
+            pass  # do nothing!
+        else:
+          self.log.error("Not support remove {} type to exist column".format(type(col[c])))
+          return False
+        col[c] = vl
+
+      return self.update_col(table_name, col, prm, exact_match, cond)
+    else:
+      return False
+       
+  def list2string(self, l):
+    ''' convert list to string
+      Arguments
+      ---------
+        l - list
+      Returns
+      ---------
+        s - string
+    '''
+    return LIST_SEP.join(l)
+
+  def string2list(self, s):
+    ''' convert string to list
+      Arguments
+      ---------
+        s - string
+      Returns
+      ---------
+        l - list
+    '''
+    return s.split(LIST_SEP)
+
+
+  def format_string(self, ori):
+    ''' format string to sql
+      Arguments
+      ---------
+        ori - original 
+      Returns
+      ---------
+        fstr - formated string
+    '''
+    if isinstance(ori, list):
+      ori = self.list2string(ori)
+    return "\"" + str(ori) + "\""
+
+  def format_condition(self, m_dict={}, exact_match=True, comp_cond=''):
+    ''' format condition in list
+      Arguments
+      ---------
+        m_dict - matching dict
+        exac_match - exact match or not
+        comp_cond - complicated condition
+      Returns 
+      ---------
+        cond_list
+    '''
+    cond_list = []
+    if len(comp_cond) > 0:
+      cond_list.append("where")
+      cond_list.append(comp_cond)
+    elif len(m_dict) > 0:
+      cond_list.append("where")
+      for key in m_dict:
+        cond_list.append(key)
+        if exact_match:
+          cond_list.append("=")
+        else:
+          cond_list.append("like")
+        cond_list.append(self.format_string(m_dict[key]))
+        cond_list.append("and")
+
+      if cond_list[-1] == "and":
+        cond_list.pop(-1)
+    
+    return cond_list
+
+ 
+  def execute_sql_cmd(self, cmd, err_waive_list=[]):
+    ''' Execute sql command
+      Arguments
+      ---------
+        cmd - sql command
+        err_waive_list - the list of waiver format when error encountered executing sql command
+
+      Returns 
+      ---------
+        (success, cursor)
+    '''
+  
+    # lock not accessable by others
+    if self.lock:
+      self.lock.acquire()
+    self.log.debug( "%s executing Sql command: %s" % (self.db_name, cmd))
+
+    c = self.db_conn.cursor()
+    try:
+      # execute the sql command
+      cursor = c.execute(cmd)
+      self.db_conn.commit()
+
+      results = cursor.fetchall()
+      return (True, results)
+    except sqlite3.Error as e:
+      err_msg = ' '.join(e.args)
+      # filt error message with waivers
+      for waiver in err_waive_list:
+        if re.match(waiver, err_msg):
+          return (False, None)
+  
+      self.log.error('SQLite command \'%s\' error: %s' % (cmd, err_msg))
+      return (False, None)
+    finally:
+      # release lock 
+      if self.lock:
+        self.lock.release()
+      else:
+        pass

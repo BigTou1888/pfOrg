@@ -45,9 +45,9 @@ class log ():
     self.log_format ='%(asctime)s : %(levelname)s : %(message)s'
     self.log_file_mode = 'w'
 
-    self.logger = self.getLogger()
+    self.logger = self.get_logger()
 
-  def createLogger(self):
+  def create_logger(self):
     ''' create logger
   
     Returns 
@@ -58,14 +58,14 @@ class log ():
     '''
 
     # clean the log directory, create the directory if not exists, if the history logs exceed the maximum, delete the old ones
-    self.dirClean()
+    self.dir_clean()
     # create logger
     logger = logging.getLogger(self.log_name)
     logging.basicConfig(level=self.log_lvl, filename=self.log_file_name, format=self.log_format, filemode=self.log_file_mode)
 
     return logger
 
-  def getLogger(self):
+  def get_logger(self):
     ''' get logger, if not exist, create a new one
   
     Returns 
@@ -75,10 +75,10 @@ class log ():
       logger created
     '''
     if not hasattr(self, 'logger'):
-      self.logger = self.createLogger()
+      self.logger = self.create_logger()
     return self.logger
 
-  def dirClean(self):
+  def dir_clean(self):
     ''' Clean log dictory, if the old logs exceed the maximum logs, delete the oldest '''
     # if the directory does not exist, create a new one
     if not os.path.exists(self.log_dir):
