@@ -64,28 +64,27 @@ class main(base_db):
     self.delete_row(table_name=JP_TBL, prm=prm)
     # 2. delete pf fropm favorite table, if exists
     self.delete_row(table_name=MAIN_FAV_TBL, prm=prm)
-    pass
+
+  def jp_pf_exists (self, pn, loc=''):
+    return self.row_exists(table_name=JP_TBL, prm={COL_PN: pn, COL_LOC: loc})
 
   def add_jp_fav (self, pn, loc=''):
     # 1. add pf to favorite table
-    self.update_col(table_name=JP_TBL, col={COL_FAV: "Y"}, prm={COL_PN: pn, COL_LOC: loc})
-    # 2. mark favorite column in jp table
     self.add_row(table_name=MAIN_FAV_TBL, table_row={COL_PN: pn, COL_LOC: loc, COL_PTYPE: "JP"})
-    pass
+    # 2. mark favorite column in jp table
+    self.update_col(table_name=JP_TBL, col={COL_FAV: "Y"}, prm={COL_PN: pn, COL_LOC: loc})
 
   def del_jp_fav (self, pn, loc=''):
     # 1. delete pf from favorite table
-    self.update_col(table_name=JP_TBL, col={COL_FAV: "N"}, prm={COL_PN: pn, COL_LOC: loc})
-    # 2. unmark favorite column in jp table
     self.delete_row(table_name=MAIN_FAV_TBL, prm={COL_PN: pn, COL_LOC: loc, COL_PTYPE: "JP"})
+    # 2. unmark favorite column in jp table
+    self.update_col(table_name=JP_TBL, col={COL_FAV: "N"}, prm={COL_PN: pn, COL_LOC: loc})
 
   def touch_jp(self, pn, loc=''):
     # 1. update last column from main table
     self.update_col(table_name=JP_TBL, col={COL_LAST: datetime.now().strftime(TIMEFORMAT)}, prm={COL_PN: pn, COL_LOC: loc})
     # 2. Add counter for count column from main table
-    #self.update_col(table_name=JP_TBL, col={"COL_LAST": datetime.now().strftime(TIMEFORMAT)}, prm={COL_PN: pn, COL_LOC: loc})
-    # 2. update pf from fav table if exists
-    pass
+    self.inc_sngl_col_from_sngl_row(table_name=JP_TBL, col=COL_COUNT, prm = {COL_PN: pn, COL_LOC: loc})
 
 
   def add_cn_pf(self, loc, name='', gen=[]):

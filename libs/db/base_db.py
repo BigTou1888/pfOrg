@@ -116,6 +116,25 @@ class base_db:
 
     return success
 
+  def delete_table(self, table_name):
+    ''' detele table
+      Arguments
+      ---------
+        table_name - table name
+      Returns 
+      ---------
+        success
+    
+    '''
+    cmd_list = ['DROP', 'TABLE']
+    cmd_list.append(table_name)
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
+    return success
+
   def clear_table(self, table_name):
     ''' detele all entries in a table 
       Arguments
@@ -188,6 +207,28 @@ class base_db:
 
     (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
     return success
+
+  def total_row_count(self, table_name):
+    ''' return total row count
+      Arguments
+      ---------
+        table_name- table name
+      Returns 
+      ---------
+        success
+    '''
+    cmd_list = ['SELECT', 'COUNT', '(*)', 'FROM']
+    cmd_list.append(table_name)
+    cmd_list.append(';')
+
+    cmd = ' '.join(cmd_list)
+
+    (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
+    if success:
+      return c[0][0]
+    else:
+      return 0
+
 
   def row_exists(self, table_name, prm={}, exact_match=True, cond=''):
     ''' check whether the row exists
@@ -391,28 +432,14 @@ class base_db:
     '''
 
     rcol = self.get_sngl_col_from_sngl_row(table_name, col, prm, exact_match, cond)   
-
-    if success:
-      for i in range(len(cl)):
-        c = cl[i]
-        vl = self.string2list(rcol[i])
-        while("" in vl):
-          vl.remove("")
-        if isinstance (col[c], list):
-          for v in col[c]:
-            if v not in vl and v != "":
-              vl.append(v)
-        elif isinstance (col[c], str):
-          if col[c] not in vl and col[c] != "":
-            vl.append(col[c])
-        else:
-          self.log.error("Not support add {} type to exist column".format(type(col[c])))
-          return False
-        col[c] = vl
-
-      return self.update_col(table_name, col, prm, exact_match, cond)
-    else:
+    try: 
+      rcol_i = int(rcol)
+      rcol_i += v
+      return self.update_col(table_name, {col: rcol_i}, prm, exact_match, cond)
+    except ValueError:
+      self.log.error("Can not convert {} to int".format(col))
       return False
+
 
      
 

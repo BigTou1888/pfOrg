@@ -67,3 +67,6 @@ print (db_mngt.main_db.get_jp_act("MUM-456", "/home/user/MUM-456_dup"))
 db_mngt.main_db.add_jp_fav("MUM-456", "/home/user/MUM-456")
 db_mngt.main_db.add_jp_fav("MUM-456", "/home/user/MUM-456_dup")
 db_mngt.main_db.del_jp_fav("MUM-456", "/home/user/MUM-456_dup")
+db_mngt.main_db.touch_jp("MUM-456", "/home/user/MUM-456_dup")
+
+db_mngt.main_db.total_row_count("japanese_table")
