@@ -3,12 +3,13 @@ import sqlite3
 import re
 import os
 import shutil
+import _thread
 import threading
 from log.log import log as logger
 
 class base_db:
 
-  def __init__(self, db_dir, db_name, log=None, lock=None, debug=False):
+  def __init__(self, db_dir:str, db_name:str, log:logger|None = None, lock:_thread.LockType|None = None, debug:bool=False):
     ''' initialize database
       Arguments
       ---------
@@ -58,7 +59,7 @@ class base_db:
     else:
       self.db_conn = sqlite3.connect(self.db_file_name)
 
-  def table_exists(self, table_name):
+  def table_exists(self, table_name: str) -> bool:
     ''' Whether table exists
       Arguments
       ---------
@@ -75,7 +76,7 @@ class base_db:
     else:
       return False
 
-  def create_table(self, table_name, table_schema, primary_key, initial_db = False):
+  def create_table(self, table_name:str, table_schema:list, primary_key:list, initial_db:bool = False) -> bool:
     ''' Create table
       Arguments
       ---------
@@ -116,7 +117,7 @@ class base_db:
 
     return success
 
-  def delete_table(self, table_name):
+  def delete_table(self, table_name: str) -> bool:
     ''' detele table
       Arguments
       ---------
@@ -135,7 +136,7 @@ class base_db:
     (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
     return success
 
-  def clear_table(self, table_name):
+  def clear_table(self, table_name:str) -> bool:
     ''' detele all entries in a table 
       Arguments
       ---------
@@ -147,7 +148,7 @@ class base_db:
     '''
     return self.delete_row(table_name, cond='')
 
-  def add_row(self, table_name, table_row):
+  def add_row(self, table_name:str, table_row:dict)->bool:
     ''' Create table entry
       Arguments
       ---------
@@ -155,7 +156,7 @@ class base_db:
         table_row - table entry will added in dict, e.g. {column, value}
       Returns 
       ---------
-        (success, cursor)
+        success
     '''
 
     cmd_list = ['INSERT', 'INTO', table_name]
@@ -188,7 +189,7 @@ class base_db:
     (success, c) = self.execute_sql_cmd(cmd)
     return success
 
-  def delete_row(self, table_name, prm = {}, exac_match = True, cond = ''):
+  def delete_row(self, table_name:str, prm:dict = {}, exac_match:bool = True, cond:str = '') -> bool:
     ''' detele entry in a table 
       Arguments
       ---------
@@ -208,7 +209,7 @@ class base_db:
     (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
     return success
 
-  def total_row_count(self, table_name):
+  def total_row_count(self, table_name:str) -> int:
     ''' return total row count
       Arguments
       ---------
@@ -225,12 +226,12 @@ class base_db:
 
     (success, c) = self.execute_sql_cmd(cmd, err_waive_list=[ 'no such table: %s' % table_name])
     if success:
-      return c[0][0]
+      return int(c[0][0])
     else:
       return 0
 
 
-  def row_exists(self, table_name, prm={}, exact_match=True, cond=''):
+  def row_exists(self, table_name:str, prm:dict={}, exact_match:bool=True, cond:str='') -> bool:
     ''' check whether the row exists
       Arguments
       ---------
@@ -253,7 +254,7 @@ class base_db:
     else :
       return False
 
-  def get_col(self, table_name, col=[], prm = {}, exact_match=True, cond = ''):
+  def get_col(self, table_name:str, col:list=[], prm = {}, exact_match=True, cond = ''):
     ''' Get entry value
       Arguments
       ---------

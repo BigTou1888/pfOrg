@@ -2,6 +2,7 @@ import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "libs"))
 
 import db.db_mngt
+import dir.jp
 from log.log import log
 
 LOG_DIR = 'log'
@@ -70,3 +71,4 @@ db_mngt.main_db.del_jp_fav("MUM-456", "/home/user/MUM-456_dup")
 db_mngt.main_db.touch_jp("MUM-456", "/home/user/MUM-456_dup")
 
 db_mngt.main_db.total_row_count("japanese_table")
+jp = dir.jp.find_jp_movie("F:/名优分类")

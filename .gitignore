@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+*.log
+dbs/*
+dbs/act.db
+dbs/act_debug.db
+dbs/gen.db
+dbs/gen_debug.db
+dbs/main_debug.db
+dbs/main.db
