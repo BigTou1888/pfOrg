@@ -61,8 +61,8 @@ db_mngt.add_jpf_act("", "/home/user/MUM-123", actress="张子枫")
 db_mngt.del_jpf_act("", "/home/user/MUM-123", actress="张子枫")
 
 #print(db_mngt.main_db.get_jp_name("%%", "%%"))
-print (db_mngt.main_db.get_jp_name("MUM-456", "/home/user/MUM-456"))
-print (db_mngt.main_db.get_jp_act("MUM-456", "/home/user/MUM-456_dup"))
+#print (db_mngt.main_db.get_jp_name("MUM-456", "/home/user/MUM-456"))
+#print (db_mngt.main_db.get_jp_act("MUM-456", "/home/user/MUM-456_dup"))
 
 #db_mngt.del_jp_pf("", "/home/user/MUM-123")
 # db_mngt.del_jp_pf("MUM-123", "")
@@ -72,7 +72,7 @@ db_mngt.main_db.del_jp_fav("MUM-456", "/home/user/MUM-456_dup")
 db_mngt.main_db.touch_jp("MUM-456", "/home/user/MUM-456_dup")
 
 db_mngt.main_db.total_row_count("japanese_table")
-jp = dir.jp.find_jp_movie("F:/名优分类")
+#jp = dir.jp.find_jp_movie("F:/名优分类")
 
 http = http_server(debug=DEBUG)
 http.run()

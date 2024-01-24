@@ -58,7 +58,7 @@ class log ():
     '''
 
     # clean the log directory, create the directory if not exists, if the history logs exceed the maximum, delete the old ones
-    self.dir_clean()
+    #self.dir_clean()
     # create logger
     logger = logging.getLogger(self.log_name)
     logging.basicConfig(level=self.log_lvl, filename=self.log_file_name, format=self.log_format, filemode=self.log_file_mode)

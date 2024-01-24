@@ -84,6 +84,7 @@ $(function(){
 	   }});
 });
 </script>
+<!--
 <div id="search-loading">
     <table class="search-loading-box" border="0" cellpadding="0" cellspacing="0">
         <tbody>
@@ -108,8 +109,9 @@ $(function(){
         </tbody>
     </table>
 </div>
-
+-->
 <!-- Modal Search -->
+<!--
 <div id="searchModal" class="modal fade" tabindex="-1" role="dialog">  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -126,16 +128,15 @@ $(function(){
     </div>
   </div> 
   </div>
-
+-->
 <nav class="navbar navbar-default navbar-fixed-top top-bar" style="z-index:900">
     <div class="container-fluid">
-        <div class="navbar-header mh50">
 								<!--
+        <div class="navbar-header mh50">
             <a href="https://www.javbus.com/">
                 <img class="hidden-xs" height="50" alt="JavBus" src="./有碼類別 - 影片 - JavBus_files/logo.png" style="height:40px; margin-top:5px;">
                 <img class="visible-xs-inline" height="50" alt="JavBus" src="./有碼類別 - 影片 - JavBus_files/logo.png">
             </a>                                                 
-									-->
 
             
 
@@ -157,13 +158,15 @@ $(function(){
                     <span class="glyphicon glyphicon-filter"></span> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li id="cellshowgr_multi"><a><span class="glyphicon glyphicon-filter"></span> 多選類別</a></li>
+                    <li id="cellshowgr_multi" onclick="sel_multi()"><a><span class="glyphicon glyphicon-filter"></span> 多選類別</a></li>
+                    <li id="cellshowgr_single"><a><span class="glyphicon glyphicon-filter"></span> 單選類別</a></li>
                 </ul>
             </div>
                               
  
         </div>
  
+									-->
         <div id="navbar" class="collapse navbar-collapse">
             <div class="navbar-form navbar-left fullsearch-form">
                 <div class="input-group">
@@ -205,26 +208,11 @@ $(function(){
 				</li> 
             </ul>
             
-            
-            
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">English</span> <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="https://www.javbus.com/en/genre">English</a></li>
-                        <li><a href="https://www.javbus.com/ja/genre">日本语</a></li>
-                        <li><a href="https://www.javbus.com/ko/genre">한국의</a></li>
-                        <li><a href="https://www.javbus.com/genre">中文</a></li>   
-                    </ul>
-                </li>
-            </ul>
-
-                        
         	            <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="https://www.javbus.com/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-filter" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">單選類別</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="mypointer" id="showgr_multi"><a><span class="glyphicon glyphicon-filter"></span>多選類別</a></li> 
+                        <li class="mypointer" id="showgr_multi" onclick="sel_multi()"><a><span class="glyphicon glyphicon-filter"></span>多選類別</a></li> 
                     </ul>
                 </li>
             </ul>            
@@ -233,6 +221,7 @@ $(function(){
         <!--/.nav-collapse -->
     </div>
 </nav>
+<!--
 <div class="row visible-xs-inline footer-bar">
     <div class="col-xs-3 text-center">
         <a id="menu" class="btn btn-default trigger-overlay"><span class="glyphicon glyphicon-align-justify"></span></a>
@@ -245,7 +234,8 @@ $(function(){
         <a id="back" class="btn btn-default" href="javascript:window.history.back()"><span class="glyphicon glyphicon-share-alt flipx"></span></a>
     </div>    
 </div>    
-<script src="./有碼類別 - 影片 - JavBus_files/focus.js.download"></script>  <link rel="stylesheet" type="text/css" href="../static/css/genre.css">
+-->
+<script src="../static/js/focus.js"></script>  <link rel="stylesheet" type="text/css" href="../static/css/genre.css">
 <div id="genre_list", class="container-fluid pt10">
 
 	<!--
@@ -263,20 +253,43 @@ $(function(){
 			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/4h">格鬥家</a>
 	            
 			<a class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" href="https://www.javbus.com/genre/34">模特兒</a>
+            <a class="col-lg-3 col-md-2 col-sm-3 col-xs-6 text-center">
+                <input type="checkbox" name="gr_sel" value="3t"> 學校作品</a>
 			</div>
+<button type="button" class="btn btn-danger btn-block btn-genre" onclick="genres_sel()">提交</button>
  	-->
 </div>
 
 <script>
-$("#showgr_single,#cellshowgr_single").click(function(){
-	$.cookie("existisgenres", "gr_single",{expires:365,path:'/'}); 
-	location.reload() 
-});
+function sel_single(){
+    //$("a.col-lg-2.col-md-2.col-sm-3.col-xs-6.text-center").find("input").remove();
+    //$("#cellshowgr_single").attr("onclick","sel_multi()");
+    //$("#cellshowgr_single").html("多選類別");
+    //$("#cellshowgr_single").attr("id","cellshowgr_multi");
+    //$("#showgr_single").attr("onclick","sel_multi()");
+    //$("#showgr_single").html("多選類別");
+    //$("#showgr_single").attr("id","showgr_multi");
 
-$("#showgr_multi,#cellshowgr_multi").click(function(){
-	$.cookie("existisgenres", "gr_multi",{expires:365,path:'/'}); 
+	//$("#genre_list").find("button").remove();
+	//$.cookie("existisgenres", "gr_single",{expires:365,path:'/'}); 
 	location.reload() 
-});
+};
+
+function sel_multi(){
+    $("#cellshowgr_multi").attr("onclick","sel_single()");
+    $("#cellshowgr_multi").html("單選類別");
+    $("#cellshowgr_multi").attr("id","cellshowgr_single");
+    $("#showgr_multi").attr("onclick","sel_single()");
+    $("#showgr_multi").html("單選類別");
+    $("#showgr_multi").attr("id","showgr_single");
+    $("a.col-lg-2.col-md-2.col-sm-3.col-xs-6.text-center").prepend("<input type=\"checkbox\" name=\"gr_sel\" value=\"3t\">");
+    $("a.col-lg-2.col-md-2.col-sm-3.col-xs-6.text-center").removeAttr( "href" );
+
+	$("#genre_list").append("<button type=\"button\" class=\"btn btn-danger btn-block btn-genre\" onclick=\"genres_sel()\">提交</button>");
+
+	//$.cookie("existisgenres", "gr_multi",{expires:365,path:'/'}); 
+	//location.reload() 
+}
 
 function genres_sel(){
 	var curGenres = "";

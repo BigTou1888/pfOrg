@@ -45,9 +45,9 @@ def find_jp_movie(root_dir:str, stop_dirs:tuple=(), skip_dirs:list=[]) -> dict:
         m = pn_re.match(folder)
         if m:
           pn = m.group(1)
-          r["known"][folder] = {"PN": pn, "loc": dirpath, "files": files, "dirs": dirs}
+          r["known"][folder] = {"PN": pn, "loc": dirpath, "files": files, "dirs": sub_dirs}
      
         else:
-          r["unknown"][folder] = {"PN": "", "loc": dirpath, "files": files, "dirs": dirs}
+          r["unknown"][folder] = {"PN": "", "loc": dirpath, "files": files, "dirs": sub_dirs}
    
   return r
